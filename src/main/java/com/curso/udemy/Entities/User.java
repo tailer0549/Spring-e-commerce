@@ -30,10 +30,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "client")
     @JsonIgnore
+    List<Order> orders = new ArrayList<>();
+
+
     public List<Order> getOrders() {
         return this.orders;
     }
