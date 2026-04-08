@@ -3,9 +3,7 @@ package com.curso.udemy.Entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name ="tb_product")
@@ -26,6 +24,16 @@ public class Product implements Serializable {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
+
+
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItem> orderItems = new HashSet<>();
+
+
+    public Set<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
 
     public Product() {
     }
